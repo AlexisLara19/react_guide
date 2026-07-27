@@ -1,13 +1,19 @@
-import { useState } from "react"
+import { useState, useId } from "react"
+import { useFilters } from "../hooks/useFilters"
 
-export function Filters({onChange}) {
-    const [minPrice, setMinPrice] = useState(0)
-    
+export function Filters() {
+    const {filters, setFilters } = useFilters()
+    //const [ minPrice, setMinPrice ] = useState(0)
+
+    // Nuevo Hook useId -- INVESTIGAR
+    const minPrinceFilteredId = useId()
+    const categoryFilteredId = useId()
+
     const handleChangeMiPrice = (event) => {
-        setMinPrice(event.target.value)
+        //setMinPrice(event.target.value)
         // Este onChange es el setState de filters en App.jsx, dos niveles hacia arriba
         // No se debe de hacer
-        onChange (prevState => ({
+        setFilters (prevState => ({
             ...prevState,
             minPrice: event.target.value
         }))
@@ -16,7 +22,7 @@ export function Filters({onChange}) {
     const handleChangeCategory = (event) => {
         // Este onChange es el setState de filters en App.jsx, dos niveles hacia arriba
         // No se debe de hacer
-        onChange(prevState => ({
+        setFilters(prevState => ({
             ...prevState,
             category: event.target.value
         }))
@@ -28,20 +34,21 @@ export function Filters({onChange}) {
     <>
     <section className = 'filters'>
         <div>
-            <label htmlFor="price" > Precio </label>
+            <label htmlFor={minPrinceFilteredId} > Precio </label>
             <input 
             type="range"
-            id="price"
+            id={minPrinceFilteredId}
             min='0'
             max='1000'
             onChange={handleChangeMiPrice}
+            value={filters.minPrice}
             ></input>
-            <span>${minPrice}</span>
+            <span>${filters.minPrice}</span>
         </div>
 
         <div>
-            <label htmlFor="category"> Categoria</label>
-            <select id="category" onChange={handleChangeCategory}>
+            <label htmlFor={categoryFilteredId}> Categoria</label>
+            <select id={categoryFilteredId} onChange={handleChangeCategory}>
                 <option value='all'> Todas</option>
                 <option value='groceries'> Comida</option>
                 <option value='fragrances'> Perfumes</option>
