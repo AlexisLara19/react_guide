@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + Vite
 
 1 - Ecommerce
@@ -14,3 +15,7 @@ Hacer uso del useContext para evitar pasar props innecesarias
 - Haz que se puedan modificar la cantidad de productos de un carrito
 - Sincroniza los cambios del carrito con la lista de productos
 - Guarda en local storage el carrito para que se recupere al recargar la pagina
+=======
+# react_guide
+React examples from midudev course
+>>>>>>> f9b9bb4f796b44e64aabeab1b5978a916c1a3a2c
