@@ -11,7 +11,7 @@ export function useFilters (){
   // Aqui estamos consumiendo el contexto (estatico)
   // Se puede hacer un estado global pero no es el uso principal
   const {filters, setFilters} = useContext(FilterContext)
-  console.log(filters)
+  //console.log(filters)
 
   // PRACTICAR FILTROS
   const filterProducts = (products) => {

@@ -3,7 +3,8 @@ import { Header } from "./components/Header"
 import { Footer } from "./components/Footer"
 import { products as initialProducts} from './mocks/products.json'
 import { useFilters } from "./hooks/useFilters"
-import { useState } from "react"
+import { Cart } from "./components/Cart"
+import { CartProvider } from "./context/cart"
 
 
 
@@ -25,9 +26,12 @@ function App() {
 
   return (
     <>
-    <Header> </Header>
-    <Products products={filteredProducts}></Products>
-    <Footer></Footer>
+    <CartProvider>
+      <Header> </Header>
+      <Cart></Cart>
+      <Products products={filteredProducts}></Products>
+      <Footer></Footer>
+    </CartProvider>
     </>
   )
 }
